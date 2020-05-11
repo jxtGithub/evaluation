@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>高校评教系统</title>
+</head>
+<link href="../static/plugin/layui/css/layui.css" rel="stylesheet"/>
+<link href="../static/css/step.css" rel="stylesheet"/>
+<script type="text/javascript" src="../static/plugin/layui/layui.js"></script>
+<script type="text/javascript" src="../static/plugin/mylayui/step.js"></script>
+<script type="text/javascript" src="../static/js/common.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.7.2/jquery.js"></script>
+<body>
+<div class="layui-step">
+    <div class="layui-step-content layui-clear">
+        <div class="layui-step-content-item">
+            <div class="layui-form-item layui-form-text">
+                <div class="layui-input-block">
+                    <br placeholder="请输入内容" name="xieyi" class="layui-textarea" style="height: 350px;"
+                              name="desc">
+                        <p>学生评教是评价课堂教学质量和教师教学的重要依据，请各学院引导学生认真客观评教，为学校课堂教学质量稳步提升提供参考依据，教师及其他任何人员不得以任何形式影响学生的评价意见。本次学生评教将试行启用新的评教系统，具体事宜安排如下：
+                        <h3>一、评教时间</h3>
+                        鉴于我校实施长短学段制，本次评教分为两阶段进行，每个阶段评教课程范围为已结束或正在进行的课程。具体安排如下：<br>
+                        第一阶段：2018.01.04-2018.01.07<br>
+                        第二阶段：2018.01.11-2018.01.16<br>
+                        <h3>二、评教操作流程</h3>
+                        学校官网主页→教务系统→输入用户名、密码登陆教务管理系统→学生评教→课程评教→进行评估→文字评教→保存。<br>
+                        <h3>三、注意事项</h3>
+                        1.学生网上评教为匿名评价，教师无法查阅到学生个人信息。学生应以严肃认真的态度，客观、公正、真实地对每位任课教师课堂教学情况给予评价。<br>
+                        2.学生需在规定时间内完成评教，否则将影响后续选课。<br>
+                        3.每门课程等级评教和文字评教结束后点击“保存”。<br>
+                        4.评教系统在外网访问速度较慢，建议在校内PC端进行评教。<br>
+                        </p>
+                </div>
+            </div>
+            <div align="center">
+                <button class="layui-btn layui-btn-warm next">同意并继续</button>
+            </div>
+        </div>
+        <!--第二步-->
+        <div class="layui-step-content-item">
+            <div id="course-content"></div>
+            <!--数据填写-->
+            <iframe src="" id="teacher-iframe" style="width:100%;height:100%;border:none;outline:none;"></iframe>
+        </div>
+        <!--<div class="layui-step-content-item">-->
+            <!--这里填写-->
+        <!--</div>-->
+        <!--<div class="layui-step-content-item">条目4</div>-->
+    </div>
+</div>
+</body>
+<script>
+    //var $;
+    //var table;
+    layui.config({
+        base: "../static/plugin/mylayui/"
+    }).use(['jquery', 'step', 'table'], function () {
+        var $ = layui.jquery;
+        var table = layui.table;
+        var step = layui.step;
+        step.render({
+            elem: '.layui-step',
+            isOpenStepLevel: true
+        });
+        $(".prev").on("click", function () {
+            step.prev();
+        });
+        $(".next").on("click", function () {
+            step.next();
+        });
+
+        var $textarea = $('textarea[name=xieyi]');
+        var html = $textarea.val();
+        $textarea.val($(html).text());
+
+        $.post("course/select?page=1&limit=100", function (msg) {
+            var obj = msg.data;
+            var html = "<fieldset class=\"layui-elem-field site-demo-button\" style=\"margin-top: 30px;\"><legend>课程选择</legend><div>";
+            for (var i in obj) {
+                html = html + "<a class=\"layui-btn course-class\" href='step_teacher?id="+obj[i].id+"'>" + obj[i].courseName + "</a>"
+            }
+            html = html + "</div></fieldset>";
+            $("#course-content").html(html);
+        });
+    });
+</script>
+
+</html>
