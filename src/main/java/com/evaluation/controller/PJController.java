@@ -22,8 +22,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author: xieyong
- * @date: 2019/4/25 20:36
+ * @author: chenrumeng
+ * @date: 2020/4/25 20:36
  * @Description: 评价信息控制类
  */
 @RestController
