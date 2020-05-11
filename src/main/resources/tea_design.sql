@@ -1,118 +1,74 @@
-/*
- Navicat Premium Data Transfer
+-- MySQL dump 10.13  Distrib 5.5.28, for Win32 (x86)
+--
+-- Host: localhost    Database: tea_design
+-- ------------------------------------------------------
+-- Server version	5.5.28
 
- Source Server         : localhost
- Source Server Type    : MySQL
- Source Server Version : 50722
- Source Host           : localhost:3306
- Source Schema         : tea_design
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MySQL
- Target Server Version : 50722
- File Encoding         : 65001
+--
+-- Table structure for table `admin`
+--
 
- Date: 14/05/2019 14:43:24
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for Pingjiaxinxi
--- ----------------------------
-DROP TABLE IF EXISTS `Pingjiaxinxi`;
-CREATE TABLE `Pingjiaxinxi` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tea_id` int(11) DEFAULT NULL,
-  `stu_id` int(11) DEFAULT NULL,
-  `zongfen` int(11) DEFAULT NULL,
-  `shijian` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=armscii8;
-
--- ----------------------------
--- Records of Pingjiaxinxi
--- ----------------------------
-BEGIN;
-INSERT INTO `Pingjiaxinxi` VALUES (1, 1, 8, 66, '2019-04-25 22:41:06');
-INSERT INTO `Pingjiaxinxi` VALUES (2, 1, 8, 62, '2019-04-25 22:44:49');
-INSERT INTO `Pingjiaxinxi` VALUES (3, 1, 1, 207, '2019-04-26 15:46:56');
-INSERT INTO `Pingjiaxinxi` VALUES (6, 2, 1, 165, '2019-04-26 16:24:04');
-COMMIT;
-
--- ----------------------------
--- Table structure for admin
--- ----------------------------
 DROP TABLE IF EXISTS `admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `admin` (
-  `userId` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` bigint(20) NOT NULL AUTO_INCREMENT,
   `userName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `userPw` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   PRIMARY KEY (`userId`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=armscii8;
+) ENGINE=InnoDB AUTO_INCREMENT=20200426062155 DEFAULT CHARSET=armscii8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of admin
--- ----------------------------
-BEGIN;
-INSERT INTO `admin` VALUES (2, 'admin111', 'admin1');
-INSERT INTO `admin` VALUES (3, 'aaa', 'dsd');
-INSERT INTO `admin` VALUES (4, 'dsds', 'dsds');
-INSERT INTO `admin` VALUES (5, 'xieyong', 'admin');
-INSERT INTO `admin` VALUES (6, 'test', 'test');
-INSERT INTO `admin` VALUES (7, '1', '1');
-INSERT INTO `admin` VALUES (8, 'admin', 'admin');
-INSERT INTO `admin` VALUES (9, 'xieyong', 'admin234');
-COMMIT;
+--
+-- Table structure for table `course`
+--
 
--- ----------------------------
--- Table structure for course
--- ----------------------------
 DROP TABLE IF EXISTS `course`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `course` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `course_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `course_score` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=armscii8;
+) ENGINE=InnoDB AUTO_INCREMENT=20200426063647 DEFAULT CHARSET=armscii8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of course
--- ----------------------------
-BEGIN;
-INSERT INTO `course` VALUES (1, '大学英语', '3');
-INSERT INTO `course` VALUES (2, '大学语文', '3');
-COMMIT;
+--
+-- Table structure for table `course_tea`
+--
 
--- ----------------------------
--- Table structure for course_tea
--- ----------------------------
 DROP TABLE IF EXISTS `course_tea`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `course_tea` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `course_id` int(10) DEFAULT NULL,
-  `teacher_id` int(10) DEFAULT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `course_id` bigint(20) DEFAULT NULL,
+  `teacher_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=armscii8;
+) ENGINE=InnoDB AUTO_INCREMENT=20200420004323 DEFAULT CHARSET=armscii8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of course_tea
--- ----------------------------
-BEGIN;
-INSERT INTO `course_tea` VALUES (2, 2, 2);
-INSERT INTO `course_tea` VALUES (3, 1, 3);
-INSERT INTO `course_tea` VALUES (4, 2, 3);
-INSERT INTO `course_tea` VALUES (5, 2, 4);
-INSERT INTO `course_tea` VALUES (6, 1, 1);
-INSERT INTO `course_tea` VALUES (7, 2, 1);
-COMMIT;
+--
+-- Table structure for table `fenshu`
+--
 
--- ----------------------------
--- Table structure for fenshu
--- ----------------------------
 DROP TABLE IF EXISTS `fenshu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `fenshu` (
-  `fenshu_id` int(11) NOT NULL AUTO_INCREMENT,
+  `fenshu_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `fenshu_fenshu` double DEFAULT NULL,
   `fenshu_erjizhibiao_id` int(11) DEFAULT NULL,
   `fenshu_teaId` int(11) DEFAULT NULL,
@@ -120,37 +76,52 @@ CREATE TABLE `fenshu` (
   `shijian` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   PRIMARY KEY (`fenshu_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for indexTable
--- ----------------------------
-DROP TABLE IF EXISTS `indexTable`;
-CREATE TABLE `indexTable` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+--
+-- Table structure for table `indextable`
+--
+
+DROP TABLE IF EXISTS `indextable`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `indextable` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `indexName` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `weight` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `parent_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `index_num` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=armscii8;
+) ENGINE=InnoDB AUTO_INCREMENT=20200419193659 DEFAULT CHARSET=armscii8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of indexTable
--- ----------------------------
-BEGIN;
-INSERT INTO `indexTable` VALUES (3, '二级类目12', '0.7332', '6', NULL);
-INSERT INTO `indexTable` VALUES (6, '二级雷米', '0.234', NULL, NULL);
-INSERT INTO `indexTable` VALUES (7, '二级小牧', '0.234', NULL, NULL);
-INSERT INTO `indexTable` VALUES (8, '教学质量', '0.1234', '6', NULL);
-INSERT INTO `indexTable` VALUES (9, '教学素质', '0.234', NULL, NULL);
-COMMIT;
+--
+-- Table structure for table `pingjiaxinxi`
+--
 
--- ----------------------------
--- Table structure for student
--- ----------------------------
+DROP TABLE IF EXISTS `pingjiaxinxi`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pingjiaxinxi` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `tea_id` bigint(20) DEFAULT NULL,
+  `cou_id` bigint(20) DEFAULT NULL,
+  `stu_id` bigint(20) DEFAULT NULL,
+  `zongfen` int(11) DEFAULT NULL,
+  `shijian` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20200420004818 DEFAULT CHARSET=armscii8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `student`
+--
+
 DROP TABLE IF EXISTS `student`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `student` (
-  `stu_id` int(11) NOT NULL AUTO_INCREMENT,
+  `stu_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `stu_xuehao` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `stu_realname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `stu_sex` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
@@ -161,23 +132,18 @@ CREATE TABLE `student` (
   `login_pw` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `del` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   PRIMARY KEY (`stu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=armscii8;
+) ENGINE=InnoDB AUTO_INCREMENT=20200426063303 DEFAULT CHARSET=armscii8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of student
--- ----------------------------
-BEGIN;
-INSERT INTO `student` VALUES (1, '111', 'xieyong', '0', '12', '23434', '1', 'admin', 'admin', NULL);
-INSERT INTO `student` VALUES (2, '0002', 'lx', '0', '23', '90293', '0', 'lx', 'admin', NULL);
-INSERT INTO `student` VALUES (3, '128293', '写要你个', '0', '23', '1223', '1', 'aaa', '2323', NULL);
-COMMIT;
+--
+-- Table structure for table `teacher`
+--
 
--- ----------------------------
--- Table structure for teacher
--- ----------------------------
 DROP TABLE IF EXISTS `teacher`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `teacher` (
-  `tea_id` int(11) NOT NULL AUTO_INCREMENT,
+  `tea_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `tea_bianhao` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `tea_realname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `tea_sex` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
@@ -186,16 +152,20 @@ CREATE TABLE `teacher` (
   `login_pw` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `del` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   PRIMARY KEY (`tea_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=armscii8;
+) ENGINE=InnoDB AUTO_INCREMENT=20200420004323 DEFAULT CHARSET=armscii8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of teacher
--- ----------------------------
-BEGIN;
-INSERT INTO `teacher` VALUES (1, '1223', 'xieyong', '0', '123', 'xieyong', 'admin', NULL);
-INSERT INTO `teacher` VALUES (2, '1223', 'xieyong', '1', '123', 'xieyong123', 'admin', NULL);
-INSERT INTO `teacher` VALUES (3, 'A123', 'jason', '0', '24', 'jason', 'admin123', NULL);
-INSERT INTO `teacher` VALUES (4, '123331A', 'aaa', '0', '23', 'ada', '123', NULL);
-COMMIT;
+--
+-- Dumping routines for database 'tea_design'
+--
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-05-10 18:34:35
